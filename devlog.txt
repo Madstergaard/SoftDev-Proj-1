@@ -18,3 +18,5 @@
 	- Gathering APIs
 	- Created file tree
 	- Wrote skeleton of app.py
+	- Created fake Spotify accout
+	- Created timeline
