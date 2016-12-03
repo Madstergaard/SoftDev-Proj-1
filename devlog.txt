@@ -1,0 +1,20 @@
+***Template***
+
+2016-12-(Date) // (Start Time)am/pm-(End Time)am/pm // (Contributer)
+	what was accomplished
+
+2016-12-2 // 2:05pm-2:50pm // Group
+	Contined formulating Design pdf. Breakthroughs included:
+	- Deciding to contruct the back end before extra BootStrap/css/html
+	- Timeline
+	- Start of work distribution
+	- Needed files
+
+2016-12-3 // 4:00pm-? // Group
+	Met at Joe & the Juice Breakthroughs included:
+	- Completing Site map
+	- Completing Component map
+	- Distributing work
+	- Gathering APIs
+	- Created file tree
+	- Wrote skeleton of app.py
