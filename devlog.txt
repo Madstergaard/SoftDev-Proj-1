@@ -21,3 +21,4 @@
 	- Created fake Spotify accout
 	- Created timeline
 	- Finished design doc
+
