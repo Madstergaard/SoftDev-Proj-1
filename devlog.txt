@@ -20,3 +20,4 @@
 	- Wrote skeleton of app.py
 	- Created fake Spotify accout
 	- Created timeline
+	- Finished design doc
