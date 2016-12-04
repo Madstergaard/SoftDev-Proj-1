@@ -1,4 +1,3 @@
-
 import json # JSON (duh)
 import requests # GET and POST requests
 import base64 # Encoding client_id:client_secret
@@ -87,4 +86,3 @@ def get_saved_tracks(access_token):
     tracks_json_text = tracks_response.text
     tracks_dict = json.loads(tracks_response.text)
     return tracks_dict
-
