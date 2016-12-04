@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dashboard</title>
+    </head>
+
+    <bodY>
+        {% if logged_in %}
+            <p>Your access token is {{ access_token }}</p>        
+            <h4>Profile Info Dict</h4>
+            <p>{{ profile }}</p>
+            <h4>Saved Tracks Dict</h4>
+            <p>{{ saved_tracks }}</p>
+        {% else %}
+            <a href="{{ auth_url }}">Log In With Spotify</a>
+        {% endif %}
+    </body>
+</html>
