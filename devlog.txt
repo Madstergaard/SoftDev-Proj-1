@@ -23,9 +23,9 @@
 	- Finished design doc
 
 2016-12-4 // 1:00pm-4:00pm // Seiji Yawata
-    Finished a basic implementation of OAuth for Spotify
-    - Running app.py will display a single link to log in to Spotify
-    - After a callback, the user's access token, raw profile data and raw saved tracks data will be displayed
-    - Added comments to all changes made in the files (app.py, utils/sift.py)
-    - Will need to implement the 'state' parameter in the initial request
-    - Still need to figure out how to implement the 'refresh_token'
+	Finished a basic implementation of OAuth for Spotify
+	- Running app.py will display a single link to log in to Spotify
+	- After a callback, the user's access token, raw profile data and raw saved tracks data will be displayed
+	- Added comments to all changes made in the files (app.py, utils/sift.py)
+	- Will need to implement the 'state' parameter in the initial request
+	- Still need to figure out how to implement the 'refresh_token'
