@@ -80,9 +80,11 @@ def get_profile_data(access_token):
 # Same thing but with a different URL endpoint (these could probably be incorporated into a
 # single function that just takes the URL endpoint)
 def get_saved_tracks(access_token):
+    query_params = {'limit': 50, 'offset': 0}
     authorization_header = {'authorization': 'Bearer {}'.format(access_token)}
     tracks_api_endpoint = '{}/me/tracks'.format(SPOTIFY_API_URL)
-    tracks_response =requests.get(tracks_api_endpoint, headers=authorization_header)
+    tracks_response = requests.get(tracks_api_endpoint, params = query_params, headers=authorization_header)
+    print tracks_response.url
     tracks_json_text = tracks_response.text
     tracks_dict = json.loads(tracks_response.text)
     return tracks_dict
