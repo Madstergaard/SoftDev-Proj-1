@@ -79,12 +79,50 @@ def get_profile_data(access_token):
 
 # Same thing but with a different URL endpoint (these could probably be incorporated into a
 # single function that just takes the URL endpoint)
+
+
 def get_saved_tracks(access_token):
-    query_params = {'limit': 50, 'offset': 0}
+
     authorization_header = {'authorization': 'Bearer {}'.format(access_token)}
     tracks_api_endpoint = '{}/me/tracks'.format(SPOTIFY_API_URL)
+
+    query_params = {'limit':50, 'offset': 0}
     tracks_response = requests.get(tracks_api_endpoint, params = query_params, headers=authorization_header)
-    print tracks_response.url
-    tracks_json_text = tracks_response.text
-    tracks_dict = json.loads(tracks_response.text)
+
+    tracks_raw_dict = json.loads(tracks_response.text)
+
+    tracks_dict = parse_json( tracks_raw_dict )
+    
+    while (query_params['offset'] <1000): #I don't know how to get actual library size -SY
+        query_params['offset'] += 50
+        tracks_response = requests.get(tracks_api_endpoint, params = query_params, headers=authorization_header)
+        tracks_dict.update(parse_json(json.loads(tracks_response.text)))
+
     return tracks_dict
+
+def parse_json( tracks_raw_dict ):
+    tracks_dict = {}
+    for track_object in tracks_raw_dict['items']:
+        for artist_object in track_object['track']['artists']:
+            if artist_object['name'] in tracks_dict:
+                tracks_dict[artist_object['name']].append(track_object['track']['name'])
+            else:
+                tracks_dict[artist_object['name']] = []
+                tracks_dict[artist_object['name']].append(track_object['track']['name'])
+    return tracks_dict
+
+def get_top_n_artists( tracks_dict, n ):
+    top_artists = []
+    for artist in tracks_dict:
+        numsongs = len(tracks_dict[artist])
+        if len(top_artists) == 0:
+            top_artists.append( (artist, numsongs) )
+        else:
+            i = 0
+            while numsongs < top_artists[i][1]:
+                i+=1
+            top_artists.insert(i, (artist, numsongs))
+    return top_artists[0:n]
+
+
+            

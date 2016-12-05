@@ -14,12 +14,14 @@ def home():
     if 'access_token' in session:
         profile = sift.get_profile_data(session['access_token'])
         saved_tracks = sift.get_saved_tracks(session['access_token'])
+        top_artists = sift.get_top_n_artists( saved_tracks, 10 )
         return render_template(
                 'dashboard.html',
                 logged_in = True,
                 access_token=session['access_token'],
                 profile=profile,
-                saved_tracks=saved_tracks
+                top_artists = top_artists
+                #saved_tracks= saved_tracks
         )
     else:
         # Authentication url is a Spotify page

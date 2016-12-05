@@ -9,12 +9,8 @@
             <p>Your access token is {{ access_token }}</p>        
             <h4>Profile Info Dict</h4>
             <p>{{ profile }}</p>
-            <h4>Saved Tracks Dict</h4>
-            <ul>
-                {% for track_object in saved_tracks['items'] %}
-                <li>{% for artist_object in track_object['track']['artists'] %}{{ artist_object['name'] }}, {% endfor %}-- {{ track_object['track']['name'] }}</li>
-                {% endfor %}
-            </ul>
+            <h4>Saved Tracks Dict</h4>	      
+	      {{ top_artists }}
         {% else %}
             <a href="{{ auth_url }}">Log In With Spotify</a>
         {% endif %}
