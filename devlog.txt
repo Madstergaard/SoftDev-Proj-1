@@ -9,7 +9,7 @@ Group -- 2016-12-2 2:05pm-2:50pm
 	- Start of work distribution
 	- Needed files
 
-Group -- 2016-12-3 4:00pm-6:00
+Group -- 2016-12-3 4:00pm-6:00pm
 	Met at Joe & the Juice. Breakthroughs included:
 	- Completing Site map
 	- Completing Component map
@@ -28,3 +28,18 @@ SeijiY -- 2016-12-4 4:46pm
 	- Added comments to all changes made in the files (app.py, utils/sift.py)
 	- Will need to implement the 'state' parameter in the initial request
 	- Still need to figure out how to implement the 'refresh_token'
+
+SarahY -- 2016-12-5 12:58am
+       Mostly finished sift.py
+       - parse_json( tracks_raw_dict ) takes json in raw form of tracks and converts it to a normal dict
+       - get_saved_tracks(access_token) returns parsed tracks_dict with all of the user's library, instead of latest 50 songs
+       - ^^ not perfect though, not sure how to stop once actual library size is met (right now, hardcoded at 1000)
+       - After logging in to Spotify, dashboard now displays list of tuples
+       - each tuple has the artist name and the number of songs saved from that artist
+       - tuples are in order from greatest number of songs to least
+       - list of tuples is top n artists (n can be changed in app.py's calling of get_top_n_artists)
+       - note: list of tuples instead of dictionary
+       - another issue: not quite sure how to get artist's pfp from spotify, but this shouldn't be too hard and can be added easily to the tuple
+       - BUG: not sure why, but for some of the artists the number of songs is far less than what it should be...
+       - Related ^^: artists are separated (i.e., if you have a song by Disclosure and Eliza Doolittle, the artists will be in the list separately
+       - To Do (other than fix these bugs): separate out authorization stuff from sift.py
