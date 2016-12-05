@@ -1,17 +1,16 @@
 ***Template***
+firstL -- 2016-12-Date Time
+	What was accomplished
 
-2016-12-(Date) // (Start Time)am/pm-(End Time)am/pm // (Contributer)
-	what was accomplished
-
-2016-12-2 // 2:05pm-2:50pm // Group
+Group -- 2016-12-2 2:05pm-2:50pm
 	Contined formulating Design pdf. Breakthroughs included:
 	- Deciding to contruct the back end before extra BootStrap/css/html
 	- Timeline
 	- Start of work distribution
 	- Needed files
 
-2016-12-3 // 4:00pm-6:00 // Group
-	Met at Joe & the Juice Breakthroughs included:
+Group -- 2016-12-3 4:00pm-6:00
+	Met at Joe & the Juice. Breakthroughs included:
 	- Completing Site map
 	- Completing Component map
 	- Distributing work
@@ -22,7 +21,7 @@
 	- Created timeline
 	- Finished design doc
 
-2016-12-4 // 1:00pm-4:00pm // Seiji Yawata
+SeijiY -- 2016-12-4 4:46pm
 	Finished a basic implementation of OAuth for Spotify
 	- Running app.py will display a single link to log in to Spotify
 	- After a callback, the user's access token, raw profile data and raw saved tracks data will be displayed
