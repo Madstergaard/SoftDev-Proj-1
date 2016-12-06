@@ -55,3 +55,10 @@ SeijiY -- 2016-12-4 7:56pm
 	- top_artists now returns an ordered dict instead of a list of tuples
 	- Dashboard now displays all saved tracks and the top 10 artists (by number of tracks saved)
 	- No new bugs (that I know of...)
+
+MaddieO -- 2016-12-3 9:00pm
+	Created/used dbUtil.py
+	- Supposed to write to DB
+	- Constructed DB
+	- Made another fake spotify because I wrote the password down wrong in class oops
+	- I can't even hardcode values into the DB and I don't know why I'm using INSERT INTO Users VALUES ()

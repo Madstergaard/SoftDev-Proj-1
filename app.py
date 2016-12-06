@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, session, url_for, redirect
-from utils import auth, sift, sort, tix
+from utils import auth, sift, sort, tix, dbUtil
 
 app = Flask(__name__)
 app.secret_key = 'secrets'
@@ -12,6 +12,8 @@ def root():
 def home():
     # Check if logged in
     if 'access_token' in session:
+        if not dbUtil.isUserInDB():
+            dbUtil.addUserToDB()
         saved_tracks = sift.saved_tracks(session['access_token'])
         trackid_dict = sift.trackid_dict(saved_tracks)
 
