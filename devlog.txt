@@ -43,3 +43,15 @@ SarahY -- 2016-12-5 12:58am
        - BUG: not sure why, but for some of the artists the number of songs is far less than what it should be...
        - Related ^^: artists are separated (i.e., if you have a song by Disclosure and Eliza Doolittle, the artists will be in the list separately
        - To Do (other than fix these bugs): separate out authorization stuff from sift.py
+       
+SeijiY -- 2016-12-4 7:56pm
+	Separated sift.py into two files (auth and sift)
+	- Implement state param to the authentication process
+	- Display all saved tracks (no need for upper bound limit)
+	- Still need to figure out refresh token (refresh after every request?)
+	- Since all the functions to sift through the tracks (in app.py) keep referring to previous functions, we should save all the info we need
+	  from the user after we log in, and then get our info from then. Right now, what we have is very unwieldy
+	- sift.py has new function data, which just takes an API endpoint and returns its json data.
+	- top_artists now returns an ordered dict instead of a list of tuples
+	- Dashboard now displays all saved tracks and the top 10 artists (by number of tracks saved)
+	- No new bugs (that I know of...)

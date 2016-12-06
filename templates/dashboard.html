@@ -6,11 +6,18 @@
 
     <bodY>
         {% if logged_in %}
-            <p>Your access token is {{ access_token }}</p>        
-            <h4>Profile Info Dict</h4>
-            <p>{{ profile }}</p>
-            <h4>Saved Tracks Dict</h4>	      
-	      {{ top_artists }}
+            <h4>Saved Tracks Dict</h4>
+            <ul>
+                {% for track_id in trackid_dict %}
+                <li>{{ trackid_dict[track_id][0] }} - {{ trackid_dict[track_id][1] }}</li>
+                {% endfor %}
+            </ul>
+            <h4>Top N Artists</h4>
+            <ol>
+                {% for artist in top_n_artists %}
+                <li>{{ artist }} - {{ top_n_artists[artist] }}</li>
+                {% endfor %}
+            </ol>
         {% else %}
             <a href="{{ auth_url }}">Log In With Spotify</a>
         {% endif %}
