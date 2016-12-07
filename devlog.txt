@@ -70,3 +70,20 @@ MaddieO -- 2016-12-6 10:00pm
 	- Added basic logout functionality for test cases
 	- Developed db to connect usernames
 	- update location fxn
+
+SarahY -- 2016-12-7 2:30am
+       - Wrote tix.py
+           - get_events_id(...) takes an artist and a city and returns a list of event ids with the artist name as a keyword. Returns an empty list if no upcoming events are found.
+	   - event(...) takes an event id and creates a dictionary with the attributes we care about: date, url, status (commented out), latitude/longitude (commented out)
+	   - get_events(...) takes an artist and a list of event ids and returns a list of dict-ified events (adds artist attribute to each)
+	   - get_event_list(...) takes list of top n artists and the user's city and returns list of dicts (events)
+       - Started planning sort.py
+           - didn't get too far, but...
+	   - conveniently, default order for event list is by artist, from greatest # of songs to least
+	   - was about to manually write up sort-by-date, but I feel like there must be a better way to sort a list of dictionaries by a certain key so I'm holding off on that
+	     (@ Seiji, what'd you do for artist_numtrack_dict...?)
+	   - figured out how to get latitude and longitude of an event on ticketmaster
+	   - also figured out how to use Google Maps API to get distance between two points (in latitude/longitude form)
+	   - we have an issue though: ipinfo.io gives you your latitude/longitude but it's not precise enough so it doesn't give you your real address
+	   - since we're looking for events in the same city, the small differences matter!
+	   - was looking into Google Maps API for geolocation but there are a bunch of parameters that I don't understand...
