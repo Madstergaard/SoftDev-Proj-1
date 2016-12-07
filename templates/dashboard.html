@@ -18,6 +18,12 @@
                 <li>{{ artist }} - {{ top_n_artists[artist] }}</li>
                 {% endfor %}
             </ol>
+	    <h4>Event URLs: Single Artist</h4>
+	    <ol>
+	      {% for link in event_urls %}
+	      <li><a target="_blank" href={{ link }}>{{ link }}</a></li>
+	      {% endfor %}
+	    </ol>
         {% else %}
             <a href="{{ auth_url }}">Log In With Spotify</a>
         {% endif %}

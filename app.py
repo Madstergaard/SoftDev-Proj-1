@@ -21,12 +21,16 @@ def home():
         trackid_dict = sift.trackid_dict(saved_tracks)
 
         artist_numtrack_dict = sift.artist_numtrack_dict(trackid_dict)
-        top_n_artists = sift.top_n_artists(artist_numtrack_dict, 10)
+        top_n_artists = sift.top_n_artists(artist_numtrack_dict, 40)
+
+        event_urls = sift.get_event_list(top_n_artists, 'New York')
+        
         return render_template(
                 'dashboard.html',
                 logged_in = True,
                 trackid_dict=trackid_dict,
-                top_n_artists=top_n_artists
+                top_n_artists=top_n_artists,
+            event_urls=event_urls
         )
     else:
         # Authentication url is a Spotify page

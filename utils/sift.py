@@ -1,5 +1,6 @@
 from collections import OrderedDict
 import json # JSON (duh)
+import urllib
 import requests # GET and POST requests
 
 # Spotify URLs
@@ -7,6 +8,9 @@ SPOTIFY_API_BASE_URL = 'https://api.spotify.com'
 API_VERSION = 'v1'
 SPOTIFY_API_URL = '{}/{}'.format(SPOTIFY_API_BASE_URL, API_VERSION)
 
+# TicketMaster URLs
+TICKETMASTER_API_URL = 'https://app.ticketmaster.com/discovery/v2'
+API_KEY = 'QrqMB3GhEKBVuiWdCmFGYZlmJhHR6UTJ'
 
 def data(endpoint, params, headers):
     response = requests.get(endpoint, params=params, headers=headers)
@@ -64,3 +68,33 @@ def top_n_artists(ordered, n):
     for i in ordered.keys()[0:n]:
         ret[i] = ordered[i]
     return ret
+
+# Returns list of event urls for all top artists in given city
+def get_event_list(artists, city):
+    ret = []
+    for artist in artists:
+        ret.extend(get_event_urls(artist, city))
+    return ret
+        
+# Returns a list of event urls for one artist in given city
+def get_event_urls(artist, city):
+    ret = []
+    params = {'classificationName':'music', 'city':city, 'keyword':artist}
+   
+    endpoint = '{}/events.json?{}&apikey={}'.format(TICKETMASTER_API_URL, urllib.urlencode(params), API_KEY)
+    response = data(endpoint, None, None)
+    if '_embedded' in response:
+        return [event['url'] for event in response['_embedded']['events']]
+    else:
+        return []
+    #return response
+    
+
+
+# Returns dictionary of event details given event id
+
+    
+
+    
+
+    
