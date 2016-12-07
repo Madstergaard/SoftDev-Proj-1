@@ -7,7 +7,7 @@ db = sqlite3.connect("data/DB.db")
 c = db.cursor()
 
 
-userTable = "CREATE TABLE Users(username TEXT, location TEXT, numArtists INTEGER);"
+userTable = "CREATE TABLE Users(username TEXT, location TEXT, numArtists INTEGER, artistData TEXT);"
 c.execute(userTable)
 
 goingTable = "CREATE TABLE EventsAttending(username TEXT, eventName TEXT, eventURL TEXT, location TEXT, dateOfEvent TEXT);"

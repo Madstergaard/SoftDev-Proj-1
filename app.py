@@ -15,8 +15,6 @@ def home():
         # Refresh access token
         session['access_token'] = auth.refresh(session['refresh_token'])
 
-        if not dbUtil.isUserInDB():
-            dbUtil.addUserToDB()
         saved_tracks = sift.saved_tracks(session['access_token'])
         trackid_dict = sift.trackid_dict(saved_tracks)
 
@@ -43,6 +41,7 @@ def logout():
     d = request.form
     if (d["type"] == "Log Out"):
         session.pop('access_token')
+        session.pop('refresh_token')
         return redirect(url_for('root'))
 
 # Used for the callback from Spotify to our website
@@ -55,6 +54,9 @@ def login():
         token_response = auth.token_request(auth_token)
         session['access_token'] = token_response['access_token']
         session['refresh_token'] = token_response['refresh_token']
+        if not dbUtil.isUserInDB():
+            trackData = sift.saved_tracks(session['access_token'])
+            dbUtil.addUserToDB(trackData)
     # Always redirect to the homepage
     return redirect(url_for('home'))
 

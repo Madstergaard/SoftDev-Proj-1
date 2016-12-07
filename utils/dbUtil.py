@@ -19,7 +19,7 @@ def isUserInDB():
 	return False
 
 
-def addUserToDB():
+def addUserToDB(artistData):
 	db = sqlite3.connect("data/DB.db")
 	c = db.cursor()
 
@@ -34,7 +34,7 @@ def addUserToDB():
     # default preferences
 	numArtists = 10
 
-	cmd = 'INSERT INTO Users VALUES("%s", "%s", %d);' %(user, location, numArtists)
+	cmd = 'INSERT INTO Users VALUES("%s", "%s", %d, %s);' %(user, location, numArtists, artistData)
 	c.execute(cmd)
 	db.commit()
 	db.close()
@@ -53,3 +53,4 @@ def updateLocation(newLocation):
 	db.commit()
 	db.close()
 	return 
+
