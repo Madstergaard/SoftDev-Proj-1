@@ -37,6 +37,14 @@ def home():
         auth_url = auth.authentication_url()
         return render_template('dashboard.html', logged_in = False, auth_url=auth_url)
 
+# Logout
+@app.route('/logout/', methods = ['POST'])
+def logout():
+    d = request.form
+    if (d["type"] == "Log Out"):
+        session.pop('access_token')
+        return redirect(url_for('root'))
+
 # Used for the callback from Spotify to our website
 @app.route('/login/')
 def login():
