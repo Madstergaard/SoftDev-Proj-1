@@ -39,3 +39,17 @@ def addUserToDB():
 	db.commit()
 	db.close()
 	return 
+
+
+def updateLocation(newLocation):
+	db = sqlite3.connect("data/DB.db")
+	c = db.cursor()
+
+    # use Spotify API to retrieve username
+	user = sift.profile_data(session["access_token"]).get('id')
+
+	cmd = 'UPDATE Users SET location = "%s" WHERE user = "%s"' %(newLocation, user)
+	c.execute(cmd)
+	db.commit()
+	db.close()
+	return 
