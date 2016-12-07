@@ -28,7 +28,7 @@ def addUserToDB():
 	# user = "Test1"
 
     # use Ipinfo to get location
-	location = "this hasn't been implemented yet"
+	location = "New York"
 	# location = "Test1"
 
     # default preferences

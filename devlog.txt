@@ -68,4 +68,4 @@ SeijiY -- 2016-12-4 7:43pm
 
 MaddieO -- 2016-12-6 10:00pm
 	- Added basic logout functionality for test cases
-	- Developed db and wrote code to add locations, 
+	- Developed db to connect usernames
