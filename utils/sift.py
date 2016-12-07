@@ -79,7 +79,7 @@ def get_event_list(artists, city):
 # Returns a list of event urls for one artist in given city
 def get_event_urls(artist, city):
     ret = []
-    params = {'classificationName':'music', 'city':city, 'keyword':artist}
+    params = {'classificationName':'music', 'city':city, 'keyword':artist.encode('utf-8')}
    
     endpoint = '{}/events.json?{}&apikey={}'.format(TICKETMASTER_API_URL, urllib.urlencode(params), API_KEY)
     response = data(endpoint, None, None)
