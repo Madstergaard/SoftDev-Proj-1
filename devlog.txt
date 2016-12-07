@@ -56,7 +56,7 @@ SeijiY -- 2016-12-4 7:56pm
 	- Dashboard now displays all saved tracks and the top 10 artists (by number of tracks saved)
 	- No new bugs (that I know of...)
 
-MaddieO -- 2016-12-3 9:00pm
+MaddieO -- 2016-12-4 9:00pm
 	Created/used dbUtil.py
 	- Supposed to write to DB
 	- Constructed DB
@@ -65,3 +65,7 @@ MaddieO -- 2016-12-3 9:00pm
 
 SeijiY -- 2016-12-4 7:43pm
 	Added refresh_token implementation.
+
+MaddieO -- 2016-12-6 10:00pm
+	- Added basic logout functionality for test cases
+	- Developed db and wrote code to add locations, 
