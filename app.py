@@ -12,6 +12,9 @@ def root():
 def home():
     # Check if logged in
     if 'access_token' in session:
+        # Refresh access token
+        session['access_token'] = auth.refresh(session['refresh_token'])
+
         if not dbUtil.isUserInDB():
             dbUtil.addUserToDB()
         saved_tracks = sift.saved_tracks(session['access_token'])

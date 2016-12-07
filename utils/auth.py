@@ -58,3 +58,17 @@ def token_request(auth_token):
     # **Right now the app's only using the access_token, but once it expires, there's no fallback
     response_data = json.loads(post_request.text)
     return response_data
+
+# Returns new access_token
+def refresh(refresh_token):
+    params = {
+        'grant_type':'refresh_token',
+        'refresh_token':refresh_token
+    }
+    encoded_secret = base64.b64encode('{}:{}'.format(CLIENT_ID, CLIENT_SECRET))
+    headers = {'Authorization': 'Basic {}'.format(encoded_secret)}
+    request = requests.post(SPOTIFY_TOKEN_URL, data=params, headers=headers)
+    return json.loads(request.text)['access_token']
+
+
+
