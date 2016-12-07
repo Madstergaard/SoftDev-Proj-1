@@ -18,12 +18,8 @@
                 <li>{{ artist }} - {{ top_n_artists[artist] }}</li>
                 {% endfor %}
             </ol>
-	    <h4>Event URLs: Single Artist</h4>
-	    <ol>
-	      {% for link in event_urls %}
-	      <li><a target="_blank" href={{ link }}>{{ link }}</a></li>
-	      {% endfor %}
-	    </ol>
+	    <h4>Event List</h4>
+	    {{ event_list }}
             <br>
             <form action="/logout/" method="POST">
                 <input type="submit" name="type" value="Log Out">
