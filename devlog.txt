@@ -62,3 +62,6 @@ MaddieO -- 2016-12-3 9:00pm
 	- Constructed DB
 	- Made another fake spotify because I wrote the password down wrong in class oops
 	- I can't even hardcode values into the DB and I don't know why I'm using INSERT INTO Users VALUES ()
+
+SeijiY -- 2016-12-4 7:43pm
+	Added refresh_token implementation.
