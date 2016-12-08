@@ -5,7 +5,7 @@ import sift
 
 # TicketMaster URLs
 TICKETMASTER_API_URL = 'https://app.ticketmaster.com/discovery/v2'
-API_KEY = 'QrqMB3GhEKBVuiWdCmFGYZlmJhHR6UTJ'
+API_KEY = json.loads(open("keys.json").read())['ticketmaster']['API_KEY']
 
 # Returns user's current city from ip info
 def get_city():

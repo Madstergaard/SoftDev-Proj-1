@@ -7,8 +7,8 @@ import uuid # For generating unique identifier (state param)
 # Authorization Code Flow implementation: https://developer.spotify.com/web-api/authorization-guide/#authorization-code-flow
 
 # Client Keys
-CLIENT_ID = 'ff5c4964b91b47d0a40933042bbe51d4'
-CLIENT_SECRET = '034ac7a503834cd9a02f25183c3397d6'
+CLIENT_ID = json.loads(open("keys.json").read())['spotify']['CLIENT_ID'] 
+CLIENT_SECRET = json.loads(open("keys.json").read())['spotify']['CLIENT_SECRET'] 
 
 # Spotify URLS
 SPOTIFY_AUTH_URL = 'https://accounts.spotify.com/authorize'
