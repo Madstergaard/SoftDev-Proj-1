@@ -95,5 +95,16 @@ SeijiY -- 2016-12-7 9:06pm
 	- rewrote top_n function in sift, making it more streamlined (and we don't save data about tracks we don't need)
 	- bug: ticketmaster calls are ridiculously slow (1 minute for 40 artists) (could move these to be done during login, but that would just shift the problem on to login)
 
-MaddieO -- 2016-12-7 12:18am
+MaddieO -- 2016-12-8 12:18am
 	- Outlined/sketched front-end layouts and planned Bootstrap for dashboard.html, event.html, account.html
+
+SarahY -- 2016-12-8 2:32am
+       - Updated tix.py so that city is no longer hardcoded (tix.get_city() gets called when app.py is run)
+       - Updated sort.py to add sort_by_date which just sorts the event_list chronologically (works)
+       - Updated sort.py to add sort_by_status which returns a dict:
+       	 { Going:[ {event}, {event}, {event} ],
+	   Interested:[ {event}, {event}, {event} ],
+	   Unmarked:[ {event}, {event}, {event} ], }
+	 --> each is sorted chronologically
+	 Tried some test cases locally but didn't work with actual data because we haven't implemented the Going/Interested/Unmarked thing yet
+
