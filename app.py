@@ -22,7 +22,7 @@ def home():
         artist_data = sift.top_n(artist_data, 40) #sorted
 
         print "GETTING EVENTS"
-        event_list = tix.get_event_list(artist_data, 'New York')
+        event_list = sort.sort_by_date(tix.get_event_list(artist_data, 'New York'))
         print "DONE"
         return render_template(
             'dashboard.html',
