@@ -18,7 +18,7 @@ SPOTIFY_TOKEN_URL = 'https://accounts.spotify.com/api/token'
 REDIRECT_URI = 'http://127.0.0.1:5000/login/'
 SCOPE = 'playlist-read-private user-follow-read user-library-read'
 STATE = str(uuid.uuid4())
-SHOW_DIALOG_bool = False
+SHOW_DIALOG_bool = True
 SHOW_DIALOG_str = str(SHOW_DIALOG_bool).lower()
 
 # The parameter for the authentication url (the 'MOSSY wants to connect to your account' page)

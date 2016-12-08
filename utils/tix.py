@@ -12,20 +12,19 @@ API_KEY = 'QrqMB3GhEKBVuiWdCmFGYZlmJhHR6UTJ'
 def get_event_list(artists, city):
     ret = []
     for artist in artists:
+        print "GETTING TIX DATA FOR {}".format(artist.encode('utf-8'))
         ret.extend( get_events( artist, (get_event_ids(artist, city)) ) )
     return ret
-        
+
 # Returns a list of event ids for one artist in given city
 def get_event_ids(artist, city):
-    ret = []
     params = {'classificationName':'music', 'city':city, 'keyword':artist.encode('utf-8')}
-   
+
     endpoint = '{}/events.json?{}&apikey={}'.format(TICKETMASTER_API_URL, urllib.urlencode(params), API_KEY)
     response = sift.data(endpoint, None, None)
     if '_embedded' in response:
         return [event['id'] for event in response['_embedded']['events']]
-    else:
-        return []
+    return []
 
 # Returns a dict representing individual event given event id
 def event(eventid):

@@ -6,24 +6,16 @@
 
     <bodY>
         {% if logged_in %}
-            <h4>Saved Tracks Dict</h4>
-            <ul>
-                {% for track_id in trackid_dict %}
-                <li>{{ trackid_dict[track_id][0] }} - {{ trackid_dict[track_id][1] }}</li>
-                {% endfor %}
-            </ul>
-            <h4>Top N Artists</h4>
-            <ol>
-                {% for artist in top_n_artists %}
-                <li>{{ artist }} - {{ top_n_artists[artist] }}</li>
-                {% endfor %}
-            </ol>
 	    <h4>Event List</h4>
-	    {{ event_list }}
-            <br>
-            <form action="/logout/" method="POST">
-                <input type="submit" name="type" value="Log Out">
-            </form>
+        <ul>
+	    {% for event in event_list %}
+        <li>{{ event }}</li>
+        {% endfor %}
+        </ul>
+        <br>
+        <form action="/logout/" method="POST">
+            <input type="submit" name="type" value="Log Out">
+         </form>
         {% else %}
             <a href="{{ auth_url }}">Log In With Spotify</a>
         {% endif %}
