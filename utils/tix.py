@@ -7,6 +7,11 @@ import sift
 TICKETMASTER_API_URL = 'https://app.ticketmaster.com/discovery/v2'
 API_KEY = 'QrqMB3GhEKBVuiWdCmFGYZlmJhHR6UTJ'
 
+# Returns user's current city from ip info
+def get_city():
+    response = sift.data('http://ipinfo.io/geo', None, None)
+    return response['city']
+
 # Returns list of event dicts for all top artists in given city
 # Default order: number of songs saved from each artist
 def get_event_list(artists, city):

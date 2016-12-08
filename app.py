@@ -18,11 +18,13 @@ def home():
         session['access_token'] = auth.refresh(session['refresh_token'])
 
         print "GETTING ARTIST DATA FROM DB"
-        artist_data = loads(dbUtil.getArtistData()) #unordered
-        artist_data = sift.top_n(artist_data, 40) #sorted
+        artist_data = loads(dbUtil.getArtistData()) #unordered        
+        artist_data = sift.top_n(artist_data, 24) #sorted
 
         print "GETTING EVENTS"
-        event_list = sort.sort_by_date(tix.get_event_list(artist_data, 'New York'))
+        city = tix.get_city()
+        event_list = tix.get_event_list(artist_data, city)
+        event_list_chronological = sort.sort_by_date(event_list)
         print "DONE"
         return render_template(
             'dashboard.html',
