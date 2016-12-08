@@ -94,3 +94,6 @@ SeijiY -- 2016-12-7 9:06pm
 	- Added the corresponding functions for this in dbUtil.py
 	- rewrote top_n function in sift, making it more streamlined (and we don't save data about tracks we don't need)
 	- bug: ticketmaster calls are ridiculously slow (1 minute for 40 artists) (could move these to be done during login, but that would just shift the problem on to login)
+
+MaddieO -- 2016-12-7 12:18am
+	- Outlined/sketched front-end layouts and planned Bootstrap for dashboard.html, event.html, account.html
