@@ -87,3 +87,10 @@ SarahY -- 2016-12-7 2:30am
 	   - we have an issue though: ipinfo.io gives you your latitude/longitude but it's not precise enough so it doesn't give you your real address
 	   - since we're looking for events in the same city, the small differences matter!
 	   - was looking into Google Maps API for geolocation but there are a bunch of parameters that I don't understand...
+
+SeijiY -- 2016-12-7 9:06pm
+	- Added Debug messages everywhere
+	- artist data will be obtained @ /login so that the dashboard can load faster (data will be stored in the DB for other paths to obtain from)
+	- Added the corresponding functions for this in dbUtil.py
+	- rewrote top_n function in sift, making it more streamlined (and we don't save data about tracks we don't need)
+	- bug: ticketmaster calls are ridiculously slow (1 minute for 40 artists) (could move these to be done during login, but that would just shift the problem on to login)
