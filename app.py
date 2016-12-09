@@ -67,13 +67,24 @@ def login():
     print "REDIRECTING TO HOME"
     return redirect(url_for('home'))
 
-@app.route('/event/<eventID>')
-def event(eventID):
-    return 'Nothing yet'
-
-@app.route('/preferences/')
-def preferences():
-    return 'Nothing yet'
+@app.route('/event/<eventIndex>')
+def event(eventIndex):
+    event_details = loads(dbUtil.getEventData())[eventIndex]
+    name = event_details['event-name']
+    date = event_details['date']
+    artist = event_details['artist']
+    url = event_details['url']
+    status = event_details['status']
+    location = [event_details['latitude'], event_details['longitude']]
+    return render_template(
+        'event.html',
+        name = name,
+        date = date,
+        artist = artist,
+        url = url,
+        status = status,
+        location = location
+    )
 
 if __name__ == '__main__':
     app.debug = True
