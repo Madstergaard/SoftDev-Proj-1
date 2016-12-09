@@ -24,7 +24,7 @@ def add_artists(curr_page, ret):
             artist_name = artist_object['name']
             ret[artist_name] = ret.get(artist_name, 0) + 1
 
-# Returns dict with 'artist':'num of tracks' pairs
+# Returns list of artists with the one with most tracks at index 0
 def artist_num(access_token):
     ret = dict()
 
@@ -39,11 +39,9 @@ def artist_num(access_token):
         curr_page = data(curr_page.get('next'), None, headers)
         add_artists(curr_page, ret)
 
-    #ret = OrderedDict(sorted(ret.items(), key = lambda x:x[1], reverse=True))
-    return ret
+    ret = OrderedDict(sorted(ret.items(), key = lambda x:x[1], reverse=True))
+    return list(ret.keys())
 
-# Takes the output of artist_num as input (and a number)
-# Returns top n artist:numtrack OrderedDict
+# Returns top n artists list
 def top_n(artist_data, n):
-    new_d = OrderedDict(sorted(artist_data.items(), key=lambda x:x[1], reverse=True))
-    return OrderedDict(islice(new_d.iteritems(), n))
+    return artist_data[0:n]

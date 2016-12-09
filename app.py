@@ -18,8 +18,8 @@ def home():
         session['access_token'] = auth.refresh(session['refresh_token'])
 
         print "GETTING ARTIST DATA FROM DB"
-        artist_data = loads(dbUtil.getArtistData()) #unordered        
-        artist_data = sift.top_n(artist_data, 24) #sorted
+        artist_data = loads(dbUtil.getArtistData()) #sorted (all)
+        artist_data = sift.top_n(artist_data, 24) #slices list
 
         print "GETTING EVENTS"
         city = tix.get_city()
