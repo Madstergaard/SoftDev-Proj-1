@@ -108,3 +108,5 @@ SarahY -- 2016-12-8 2:32am
 	 --> each is sorted chronologically
 	 Tried some test cases locally but didn't work with actual data because we haven't implemented the Going/Interested/Unmarked thing yet
 
+SeijiY -- 2016-12-8 8:36pm
+	- sift.py: artist_num now returns a list with the artist with the most saved tracks at index 0 (since we don't need the number of tracks)
