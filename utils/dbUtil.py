@@ -1,4 +1,4 @@
-import sqlite3, sift
+import sqlite3, sift, tix
 from flask import session
 import json
 
@@ -21,7 +21,7 @@ def isUserInDB():
 		if user == record[0]:
 			db.close()
 			return True
-	db.close()
+	        db.close()
 	return False
 
 
@@ -34,14 +34,17 @@ def addUserToDB():
 	# user = "Test1"
 
     # use Ipinfo to get location
-	location = "New York"
+	location = tix.get_city()        
 	# location = "Test1"
 
     # default preferences
 	numArtists = 10
 
 	# gets artist data 
-    artistData = json.dumps(sift.artist_num(session['access_token']))
+        artistData = json.dumps(sift.artist_num(session['access_token']))
+
+        # gets event data
+        eventData = json.dumps(tix.get_event_list(sift.top_n(artistData, 24), location))
 
         params = (user, location, numArtists, artistData, eventData)
 	cmd = 'INSERT INTO Users VALUES(?,?,?,?,?);' 
@@ -93,7 +96,7 @@ def refreshArtistData():
 
 	user = sift.profile_data(session["access_token"]).get('id')
 
-    artistData = json.dumps(sift.artist_num(session['access_token']))
+        artistData = json.dumps(sift.artist_num(session['access_token']))
 
         params = (artistData, user)
 	cmd = 'UPDATE Users SET artistData = ? WHERE username = ?;'
@@ -124,11 +127,12 @@ def getArtistData():
 def refreshEventData():
 	db = sqlite3.connect("data/DB.db")
 	c = db.cursor()
+        city = getLocation()
+        if city == "current":
+                city = tix.get_city()
 
-	user = sift.profile_data(session["access_token"]).get('id')
-
-    eventData = json.dumps(tix.get_event_list(getArtistData(), )
-
+        eventData = json.dumps(tix.get_event_list(getArtistData(), city))
+        
         params = (artistData, user)
 	cmd = 'UPDATE Users SET eventData = ? WHERE username = ?;'
 	c.execute(cmd, params)

@@ -23,11 +23,13 @@ def home():
 
         print "GETTING EVENTS"
         city = tix.get_city()
-        event_list = tix.get_event_list(artist_data, city)        
+        #event_list = tix.get_event_list(artist_data, city)
+        event_list = loads(dbUtil.getEventData())
         print "DONE"
         return render_template(
             'dashboard.html',
             logged_in = True,
+            #artist_data = artist_data,
             event_list = event_list
         )
     else:
@@ -39,7 +41,17 @@ def home():
 def homesorted(attribute):
     if attribute == "artists-alphabetical":
         event_list_sorted = sort.sort_artists_alphabet( tix.get_event_list())
-    
+
+@app.route('/refresh/', methods = ['POST'])
+def refresh():
+    d = request.form
+    if (d['type'] == "Refresh Events"):
+        dbUtil.refreshEventData()
+    if (d['type'] == "Refresh Artists"):
+        dbUtil.refreshArtistData()
+    return redirect(url_for('root'))
+        
+        
 # Logout
 @app.route('/logout/', methods = ['POST'])
 def logout():
