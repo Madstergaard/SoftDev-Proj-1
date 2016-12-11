@@ -21,3 +21,11 @@ def sort_by_status(event_list):
     for group in ret:
         group = sort_by_date(group)
     return ret
+
+# Takes event list, orders alphabetize by artist
+def sort_artists_alphabet(event_list):
+    ret = sorted(event_list, key=lambda k: k['artist'])
+
+# Takes event list, orders in reverse alphabetical order by artist
+def sort_artists_reverse(event_list):
+    ret = sorted(event_list, key=lambda k: k['artist'], reverse=True)

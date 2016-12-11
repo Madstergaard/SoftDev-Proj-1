@@ -40,14 +40,12 @@ def event(eventid):
         ret['date'] = response['dates']['start']['localDate']
     if 'url' in response:
         ret['url'] = response['url']
-    '''
     if '_embedded' in response:
         ret['latitude'] = response['_embedded']['venues'][0]['location']['latitude']
         ret['longitude'] = response['_embedded']['venues'][0]['location']['longitude']
-    '''
     if 'name' in response:
         ret['event-name'] = response['name']
-    #ret['status'] = 'unmarked'
+    ret['status'] = 'unmarked'
     return ret
 
 # Returns a list of events for one artist given list of event ids
