@@ -144,7 +144,7 @@ def getEventData():
 	user = sift.profile_data(session["access_token"]).get('id')
 
         params = (user,)
-	cmd = 'SELECT eventData FROM Users WHERE username = ?'
+	cmd = 'SELECT eventData FROM Users WHERE username = ?;'
 	c.execute(cmd, params)
         ret = c.fetchone()[0]
 	db.commit()
