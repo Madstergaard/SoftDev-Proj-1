@@ -2,6 +2,11 @@ import sqlite3, sift
 from flask import session
 import json
 
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ USER TABLE (AKA ONLY TABLE) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# FOR USERNAMES
+
 def isUserInDB():
 	db = sqlite3.connect("data/DB.db")
 	c = db.cursor()
@@ -35,14 +40,52 @@ def addUserToDB():
     # default preferences
 	numArtists = 10
 
-        artistData = json.dumps(sift.artist_num(session['access_token']))
+	# gets artist data 
+    artistData = json.dumps(sift.artist_num(session['access_token']))
 
-        params = (user, location, numArtists, artistData)
-	cmd = 'INSERT INTO Users VALUES(?,?,?,?);'
+        params = (user, location, numArtists, artistData, eventData)
+	cmd = 'INSERT INTO Users VALUES(?,?,?,?,?);' 
 	c.execute(cmd, params)
 	db.commit()
 	db.close()
 	return
+
+
+
+# FOR LOCATION
+
+def updateLocation(newLocation):
+	db = sqlite3.connect("data/DB.db")
+	c = db.cursor()
+
+    # use Spotify API to retrieve username
+	user = sift.profile_data(session["access_token"]).get('id')
+
+        params = (newLocation, user)
+	cmd = 'UPDATE Users SET location = ? WHERE username = ?'
+	c.execute(cmd, params)
+	db.commit()
+	db.close()
+	return
+
+def getLocation():
+	db = sqlite3.connect("data/DB.db")
+	c = db.cursor()
+
+	# use oAuth to retrieve username
+	user = sift.profile_data(session["access_token"]).get('id')
+
+        params = (user)
+	cmd = 'SELECT location FROM Users WHERE username = ?'
+	c.execute(cmd, params)
+        ret = c.fetchone()[0]
+	db.commit()
+	db.close()
+	return ret
+
+
+
+# FOR ARTISTS
 
 def refreshArtistData():
 	db = sqlite3.connect("data/DB.db")
@@ -50,7 +93,7 @@ def refreshArtistData():
 
 	user = sift.profile_data(session["access_token"]).get('id')
 
-        artistData = json.dumps(sift.artist_num(session['access_token']))
+    artistData = json.dumps(sift.artist_num(session['access_token']))
 
         params = (artistData, user)
 	cmd = 'UPDATE Users SET artistData = ? WHERE username = ?;'
@@ -74,17 +117,38 @@ def getArtistData():
 	return ret
 
 
-def updateLocation(newLocation):
+
+
+# FOR EVENTS
+
+def refreshEventData():
 	db = sqlite3.connect("data/DB.db")
 	c = db.cursor()
 
-    # use Spotify API to retrieve username
 	user = sift.profile_data(session["access_token"]).get('id')
 
-        params = (newLocation, user)
-	cmd = 'UPDATE Users SET location = ? WHERE username = ?'
+    eventData = json.dumps(tix.get_event_list(getArtistData(), )
+
+        params = (artistData, user)
+	cmd = 'UPDATE Users SET eventData = ? WHERE username = ?;'
 	c.execute(cmd, params)
 	db.commit()
 	db.close()
 	return
+
+
+def getEventData():
+	db = sqlite3.connect("data/DB.db")
+	c = db.cursor()
+
+	user = sift.profile_data(session["access_token"]).get('id')
+
+        params = (user,)
+	cmd = 'SELECT eventData FROM Users WHERE username = ?'
+	c.execute(cmd, params)
+        ret = c.fetchone()[0]
+	db.commit()
+	db.close()
+	return ret
+
 

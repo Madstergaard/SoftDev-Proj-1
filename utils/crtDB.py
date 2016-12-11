@@ -7,14 +7,8 @@ db = sqlite3.connect("data/DB.db")
 c = db.cursor()
 
 
-userTable = "CREATE TABLE Users(username TEXT, location TEXT, numArtists INTEGER, artistData TEXT);"
+userTable = "CREATE TABLE Users(username TEXT, location TEXT, numArtists INTEGER, artistData TEXT, eventData TEXT);"
 c.execute(userTable)
-
-goingTable = "CREATE TABLE EventsAttending(username TEXT, eventName TEXT, eventURL TEXT, location TEXT, dateOfEvent TEXT);"
-c.execute(goingTable)
-
-interestedTable = "CREATE TABLE EventsInterestedIn(username TEXT, eventName TEXT, eventURL TEXT, location TEXT, dateOfEvent TEXT);"
-c.execute(interestedTable)
 
 db.commit()
 db.close()
