@@ -44,7 +44,7 @@ def addUserToDB():
         artistData = json.dumps(sift.artist_num(session['access_token']))
 
         # gets event data
-        eventData = json.dumps(tix.get_event_list(sift.top_n(artistData, 24), location))
+        eventData = json.dumps(tix.get_event_list(sift.top_n(loads(artistData), 24), location))
 
         params = (user, location, numArtists, artistData, eventData)
 	cmd = 'INSERT INTO Users VALUES(?,?,?,?,?);' 

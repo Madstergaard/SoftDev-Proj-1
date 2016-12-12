@@ -12,8 +12,8 @@
       </form>
       <h4>Event List</h4>
       <ul>
-	{% for event in event_data %}
-        <li>{{ event['url'] }}</li>
+	{% for event in event_list %}
+        <li>{{ event['artist'] }}</li>
         {% endfor %}
       </ul>
       <br>
