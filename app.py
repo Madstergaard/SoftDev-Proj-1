@@ -85,22 +85,26 @@ def login():
 
 @app.route('/event/<eventID>')
 def event(eventID):
-    event_details = loads(dbUtil.getEventData())[eventIndex]
-    name = event_details['event-name']
-    date = event_details['date']
-    artist = event_details['artist']
-    url = event_details['url']
-    status = event_details['status']
-    location = [event_details['latitude'], event_details['longitude']]
-    return render_template(
-        'event.html',
-        name = name,
-        date = date,
-        artist = artist,
-        url = url,
-        status = status,
-        location = location
-    )
+    event_list = loads(dbUtil.getEventData())
+    event_details = next((item for item in event_list if item["id"] == eventID), None)
+    if event_details == None:
+        return "Event not found :("
+    else:
+        name = event_details['event-name']
+        date = event_details['date']
+        artist = event_details['artist']
+        url = event_details['url']
+        status = event_details['status']
+        location = [event_details['latitude'], event_details['longitude']]
+        return render_template(
+            'event.html',
+            name = name,
+            date = date,
+            artist = artist,
+            url = url,
+            status = status,
+            location = location
+        )
 
 if __name__ == '__main__':
     app.debug = True
