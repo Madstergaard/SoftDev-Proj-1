@@ -44,7 +44,7 @@ def addUserToDB():
         artistData = json.dumps(sift.artist_num(session['access_token']))
 
         # gets event data
-        eventData = json.dumps(tix.get_event_list(sift.top_n(loads(artistData), 24), location))
+        eventData = json.dumps(tix.get_event_list(json.loads(artistData), 24), location)
 
         params = (user, location, numArtists, artistData, eventData)
 	cmd = 'INSERT INTO Users VALUES(?,?,?,?,?);' 
@@ -78,7 +78,7 @@ def getLocation():
 	# use oAuth to retrieve username
 	user = sift.profile_data(session["access_token"]).get('id')
 
-        params = (user)
+        params = (user,)
 	cmd = 'SELECT location FROM Users WHERE username = ?'
 	c.execute(cmd, params)
         ret = c.fetchone()[0]
