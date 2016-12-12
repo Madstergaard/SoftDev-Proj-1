@@ -115,4 +115,10 @@ SarahY, MaddieO -- 2016-12-11 7:00pm
 	- met in Maddie's crib
 	- Sarah: got rid of a few small bugs in dbUtils.py, tried and failed to figure out why adding the user to the database and/or refreshing event data separates the artist data by character instead of reading it as an actual list??
 	- Maddie: created a sample individual event page with hardcoded stuff, still local on her comp
-	
+
+SarahY -- 2016-12-12 3:00pm
+       - Finally made refreshing event data work!!
+       - Also, finally made links to individual events work!! Now instead of /event/<eventIndex> we have /event/<eventID>
+       - html for dashboard and individual events is still od basic but Maddie can integrate her stuff
+       - should we look into using the latitude/longitude to generate map with marker?
+       - we need to figure out the city stuff -- using current location vs. using saved city (dropdown -- need some frontend done first)
