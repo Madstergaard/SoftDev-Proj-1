@@ -23,11 +23,13 @@ def home():
 
         print "GETTING EVENTS"
         city = tix.get_city()
-        event_list = tix.get_event_list(artist_data, city)        
+        #event_list = tix.get_event_list(artist_data, city)
+        event_list = loads(dbUtil.getEventData())
         print "DONE"
         return render_template(
             'dashboard.html',
             logged_in = True,
+            #artist_data = artist_data,
             event_list = event_list
         )
     else:
@@ -39,7 +41,17 @@ def home():
 def homesorted(attribute):
     if attribute == "artists-alphabetical":
         event_list_sorted = sort.sort_artists_alphabet( tix.get_event_list())
-    
+
+@app.route('/refresh/', methods = ['POST'])
+def refresh():
+    d = request.form
+    if (d['type'] == "Refresh Events"):
+        dbUtil.refreshEventData()
+    if (d['type'] == "Refresh Artists"):
+        dbUtil.refreshArtistData()
+    return redirect(url_for('root'))
+        
+        
 # Logout
 @app.route('/logout/', methods = ['POST'])
 def logout():
@@ -71,24 +83,28 @@ def login():
     print "REDIRECTING TO HOME"
     return redirect(url_for('home'))
 
-@app.route('/event/<eventIndex>')
-def event(eventIndex):
-    event_details = loads(dbUtil.getEventData())[eventIndex]
-    name = event_details['event-name']
-    date = event_details['date']
-    artist = event_details['artist']
-    url = event_details['url']
-    status = event_details['status']
-    location = [event_details['latitude'], event_details['longitude']]
-    return render_template(
-        'event.html',
-        name = name,
-        date = date,
-        artist = artist,
-        url = url,
-        status = status,
-        location = location
-    )
+@app.route('/event/<eventID>')
+def event(eventID):
+    event_list = loads(dbUtil.getEventData())
+    event_details = next((item for item in event_list if item["id"] == eventID), None)
+    if event_details == None:
+        return "Event not found :("
+    else:
+        name = event_details['event-name']
+        date = event_details['date']
+        artist = event_details['artist']
+        url = event_details['url']
+        status = event_details['status']
+        location = [event_details['latitude'], event_details['longitude']]
+        return render_template(
+            'event.html',
+            name = name,
+            date = date,
+            artist = artist,
+            url = url,
+            status = status,
+            location = location
+        )
 
 if __name__ == '__main__':
     app.debug = True

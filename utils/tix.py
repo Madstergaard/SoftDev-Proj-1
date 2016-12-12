@@ -1,3 +1,4 @@
+import sqlite3
 import urllib
 import requests
 import json
@@ -8,7 +9,7 @@ TICKETMASTER_API_URL = 'https://app.ticketmaster.com/discovery/v2'
 API_KEY = json.loads(open("keys.json").read())['ticketmaster']['API_KEY']
 
 # Returns user's current city from ip info
-def get_city():
+def get_city():                             
     response = sift.data('http://ipinfo.io/geo', None, None)
     return response['city']
 
@@ -46,6 +47,7 @@ def event(eventid):
     if 'name' in response:
         ret['event-name'] = response['name']
     ret['status'] = 'unmarked'
+    ret['id'] = eventid
     return ret
 
 # Returns a list of events for one artist given list of event ids

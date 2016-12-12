@@ -110,3 +110,9 @@ SarahY -- 2016-12-8 2:32am
 
 SeijiY -- 2016-12-8 8:36pm
 	- sift.py: artist_num now returns a list with the artist with the most saved tracks at index 0 (since we don't need the number of tracks)
+
+SarahY, MaddieO -- 2016-12-11 7:00pm
+	- met in Maddie's crib
+	- Sarah: got rid of a few small bugs in dbUtils.py, tried and failed to figure out why adding the user to the database and/or refreshing event data separates the artist data by character instead of reading it as an actual list??
+	- Maddie: created a sample individual event page with hardcoded stuff, still local on her comp
+	
