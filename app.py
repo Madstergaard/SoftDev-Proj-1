@@ -83,8 +83,8 @@ def login():
     print "REDIRECTING TO HOME"
     return redirect(url_for('home'))
 
-@app.route('/event/<eventIndex>')
-def event(eventIndex):
+@app.route('/event/<eventID>')
+def event(eventID):
     event_details = loads(dbUtil.getEventData())[eventIndex]
     name = event_details['event-name']
     date = event_details['date']

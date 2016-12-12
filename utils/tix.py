@@ -47,6 +47,7 @@ def event(eventid):
     if 'name' in response:
         ret['event-name'] = response['name']
     ret['status'] = 'unmarked'
+    ret['id'] = eventid
     return ret
 
 # Returns a list of events for one artist given list of event ids

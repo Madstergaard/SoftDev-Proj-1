@@ -128,12 +128,13 @@ def refreshEventData():
 	db = sqlite3.connect("data/DB.db")
 	c = db.cursor()
         city = getLocation()
+        user = sift.profile_data(session["access_token"]).get('id')
         if city == "current":
                 city = tix.get_city()
 
-        eventData = json.dumps(tix.get_event_list(getArtistData(), city))
+        eventData = json.dumps(tix.get_event_list(json.loads(getArtistData()), city))
         
-        params = (artistData, user)
+        params = (eventData, user)
 	cmd = 'UPDATE Users SET eventData = ? WHERE username = ?;'
 	c.execute(cmd, params)
 	db.commit()

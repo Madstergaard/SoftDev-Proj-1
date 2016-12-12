@@ -11,11 +11,14 @@
 	<input type="submit" name="type" value="Refresh Artists">
       </form>
       <h4>Event List</h4>
-      <ul>
-	{% for event in event_list %}
-        <li>{{ event['artist'] }}</li>
+      {% for event in event_list %}
+	<div>
+          <a href="/event/{{ event['id'] }}">{{ event['event-name'] }}</a>
+	  <ul>
+	    <li>Date: {{ event['date'] }}</li>
+	    <li>Artist: {{ event['artist']  }}</li>
+	</div>
         {% endfor %}
-      </ul>
       <br>
       <form action="/logout/" method="POST">
         <input type="submit" name="type" value="Log Out">
