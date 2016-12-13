@@ -1,0 +1,5 @@
+img {
+    max-width: 600;
+    height: auto;
+    width: auto*4\3; /* ie8 */
+}
