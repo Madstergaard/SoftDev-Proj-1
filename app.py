@@ -50,8 +50,8 @@ def refresh():
     if (d['type'] == "Refresh Artists"):
         dbUtil.refreshArtistData()
     return redirect(url_for('root'))
-        
-        
+
+
 # Logout
 @app.route('/logout/', methods = ['POST'])
 def logout():
@@ -96,6 +96,7 @@ def event(eventID):
         url = event_details['url']
         status = event_details['status']
         location = [event_details['latitude'], event_details['longitude']]
+        map_link = "https://www.google.com/maps/embed/v1/search?key=AIzaSyBUaDb-SbcTLRAg6abFCDDMLuip-DnRs74&q={}+{}".format(event_details['latitude'], event_details['longitude'])
         return render_template(
             'event.html',
             name = name,
@@ -103,7 +104,8 @@ def event(eventID):
             artist = artist,
             url = url,
             status = status,
-            location = location
+            location = location,
+            map_link = map_link
         )
 
 if __name__ == '__main__':
