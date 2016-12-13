@@ -21,7 +21,7 @@ def isUserInDB():
 		if user == record[0]:
 			db.close()
 			return True
-	        db.close()
+	db.close()
 	return False
 
 

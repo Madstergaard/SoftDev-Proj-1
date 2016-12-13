@@ -122,3 +122,7 @@ SarahY -- 2016-12-12 3:00pm
        - html for dashboard and individual events is still od basic but Maddie can integrate her stuff
        - should we look into using the latitude/longitude to generate map with marker?
        - we need to figure out the city stuff -- using current location vs. using saved city (dropdown -- need some frontend done first)
+
+MaddieO -- 2016-12-8 4:00pm
+	- Connected html/css/bootstrap to backend
+	- Beautified dashboard.html
