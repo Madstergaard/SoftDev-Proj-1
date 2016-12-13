@@ -42,11 +42,7 @@
      
 
       <br>
-      <center>
-      <form action="/logout/" method="POST">
-        <input type="submit" name="type" value="Log Out">
-      </form>
-      </center>
+      
       {% else %}
       <center><a href="{{ auth_url }}">Log In With Spotify</a></center>
       {% endif %}
