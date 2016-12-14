@@ -1,107 +1,105 @@
-
 <!DOCTYPE html>
 <html>
-  <head> 
-    <title> {% block title %} {{ name }} {% endblock %} </title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="../static/styles/event.css">
-    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css">
-  </head>
-  <body>
+    <head> 
+        <title> {% block title %} {{ name }} {% endblock %} </title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="../static/styles/event.css">
+        <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-default" style="color:green;">
+            <div class="container-fluid" style="color:green;">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <b><a class="navbar-brand" href="../home"> MOSSY </a></b>
+                </div>
 
-    <nav class="navbar navbar-default" style="color:green;">
-  <div class="container-fluid" style="color:green;">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <b><a class="navbar-brand" href="../home"> MOSSY </a></b>
-    </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li> 
+                        <form action="/logout/" method="POST">
+                            <input type="submit" name="type" value="Log Out">
+                        </form>
+                    </li>
+                </ul>
 
-      <ul class="nav navbar-nav navbar-right">
-        <li> 
-        <form action="/logout/" method="POST">
-            <input type="submit" name="type" value="Log Out">
-        </form>
-        </li>
-      </ul>
-
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
-    
-   
-      <br>
-      <br>
-{% block body %}
- <div class="container">
-  <div class="jumbotron">
-    <center><h1 style="color:green;">{{ name }}</h1> </center>
-    
-  <center>
-        <h2> {{ artist }} </h2>
-        <h3> {{ date }} </h3>
-
-    
-        </center>
-    <h4><b>Venue</b></h4>
-    <iframe frameborder="0" style="border:0; max-width:600; height:auto; width: auto*4\3;" src="{{ map_link }}" allowfullscreen>
-    </iframe> 
-      <br>
-      <br>
-    
-    
+            </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
 
 
-<h4><b> Status </b></h4>
- <div class="col-lg-6">
-    <div class="input-group">
-      
-       <p> 
 
-     
-        <input type="radio" aria-label="going"> Going
-      
-    <br>
-      
-        <input type="radio" aria-label="interested"> Interested
+        <br>
+        <br>
+        {% block body %}
+        <div class="container">
+            <div class="jumbotron">
+                <center><h1 style="color:green;">{{ name }}</h1> </center>
 
-          <br>
-      <input type="radio" aria-label="unmarked"> Neither
+                <center>
+                    <h2> {{ artist }} </h2>
+                    <h3> {{ date }} </h3>
 
-      </p>
-      
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-</div><!-- /.row -->
 
-<br>
-<br>
-  <center><p><a class="btn btn-primary btn-lg" href="{{ url }}" role="button"> Buy tickets now! </a></p></center>
-  
-  </div>
-  
- </div>
-  
-   {% endblock %}
+                </center>
+                <h4><b>Venue</b></h4>
+                <iframe frameborder="0" style="border:0; max-width:600; height:auto; width: auto*4\3;" src="{{ map_link }}" allowfullscreen>
+                </iframe> 
+                <br>
+                <br>
 
 
 
 
+                <h4><b> Status </b></h4>
+                <div class="col-lg-6">
+                    <div class="input-group">
 
-    
-  <br>
-  <br>
+                        <p> 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
 
-  </body>
+                        <input type="radio" aria-label="going"> Going
+
+                        <br>
+
+                        <input type="radio" aria-label="interested"> Interested
+
+                        <br>
+                        <input type="radio" aria-label="unmarked"> Neither
+
+                        </p>
+
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+
+            <br>
+            <br>
+            <center><p><a class="btn btn-primary btn-lg" href="{{ url }}" role="button"> Buy tickets now! </a></p></center>
+
+        </div>
+
+        </div>
+
+        {% endblock %}
+
+
+
+
+
+
+        <br>
+        <br>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="../static/js/bootstrap.min.js"></script>
+
+    </body>
 </html>

@@ -1,50 +1,50 @@
 {% extends "event.html" %}
 
 {% block title %} Dashboard {% endblock %}
-    </head>
+</head>
 
-    {% block body %}
-      {% if logged_in %}
+{% block body %}
+{% if logged_in %}
 
-      <center><b><h1 style="color:green;"> Event List</h1> </b> </center>
-      <br>
+<center><b><h1 style="color:green;"> Event List</h1> </b> </center>
+<br>
 
-      <form action="/refresh/" method="POST">
-      <center>
-      
-	<input class="btn btn-primary btn-lg" type="submit" name="type" value="Refresh Events">
-	<input class="btn btn-primary btn-lg" type="submit" name="type" value="Refresh Artists">
-     </center>
-      </form>
-      
-    <br>
-    <br>
+<form action="/refresh/" method="POST">
+    <center>
 
-      {% for event in event_list %}
-	<div class="container">
+        <input class="btn btn-primary btn-lg" type="submit" name="type" value="Refresh Events">
+        <input class="btn btn-primary btn-lg" type="submit" name="type" value="Refresh Artists">
+    </center>
+</form>
+
+<br>
+<br>
+
+{% for event in event_list %}
+<div class="container">
 
     <div class="jumbotron">
-  <h3><a href="/event/{{ event['id'] }}" style="color:green;">{{ event['event-name'] }}</a></h3>
-    <p><h4>
-        Date: {{ event['date'] }} 
-        <br>
+        <h3><a href="/event/{{ event['id'] }}" style="color:green;">{{ event['event-name'] }}</a></h3>
+        <p><h4>
+            Date: {{ event['date'] }} 
+            <br>
 
-        Artist: {{ event['artist']  }}
+            Artist: {{ event['artist']  }}
 
-    </h4></p>
- 
-          
-	  
-	</div>
-    <br>
+        </h4></p>
+
+
+
     </div>
-        {% endfor %}
-     
+    <br>
+</div>
+{% endfor %}
 
-      <br>
-      
-      {% else %}
-      <center><a href="{{ auth_url }}">Log In With Spotify</a></center>
-      {% endif %}
-    {% endblock %}
+
+<br>
+
+{% else %}
+<center><a href="{{ auth_url }}">Log In With Spotify</a></center>
+{% endif %}
+{% endblock %}
 
