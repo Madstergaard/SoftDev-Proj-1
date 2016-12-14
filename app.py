@@ -108,6 +108,17 @@ def event(eventID):
             map_link = map_link
         )
 
+@app.route('/submit/')
+def submitStatus():
+    d = request.form
+    if (d['value'] == "going"):
+        dbUtil.updateStatus()
+    if (d['value'] == "interested"):
+        dbUtil.updateStatus()
+    if (d['value'] == "unmarked"):
+        dbUtil.updateStatus()
+    return redirect(url_for('root')) 
+
 if __name__ == '__main__':
     app.debug = True
     app.run()

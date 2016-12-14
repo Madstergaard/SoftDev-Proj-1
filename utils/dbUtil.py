@@ -157,3 +157,26 @@ def getEventData():
 	return ret
 
 
+
+# FOR STATUS
+
+def updateStatus(status):
+	db = sqlite3.connect("data/DB.db")
+	c = db.cursor()
+	user = sift.profile_data(session["access_token"]).get('id')
+      
+    params = (user)  
+    eventData = 'SELECT eventData FROM Users WHERE username = ?;'
+
+	# Insert json here
+
+        params = (eventData, user)
+	cmd = 'UPDATE Users SET eventData = ? WHERE username = ?;'
+	c.execute(cmd, params)
+	db.commit()
+	db.close()
+	return
+
+def getStatus():
+
+
