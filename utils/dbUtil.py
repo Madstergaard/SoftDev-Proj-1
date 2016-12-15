@@ -160,17 +160,17 @@ def getEventData():
 
 # FOR STATUS
 
-def updateStatus(status):
+def updateStatus(status, eventID):
 	db = sqlite3.connect("data/DB.db")
 	c = db.cursor()
 	user = sift.profile_data(session["access_token"]).get('id')
       
         params = (user,)  
-        eventData = loads(getEventData())
+        event_list = json.loads(getEventData())
 
-        event_details = next((item for item in eventData if item["id"] == eventID), None)
+        event_details = next((item for item in event_list if item["id"] == eventID), None)
         event_details['status'] = status
-
+        eventData = json.dumps(event_list)
         params = (eventData, user)
 	cmd = 'UPDATE Users SET eventData = ? WHERE username = ?;'
 	c.execute(cmd, params)

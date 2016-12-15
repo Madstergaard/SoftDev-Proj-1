@@ -26,7 +26,7 @@ def home():
         #event_list = tix.get_event_list(artist_data, city)
         
         event_list = loads(dbUtil.getEventData())
-        event_list = sort.sort_by_date(event_list)
+        event_list = sort.sort_by_status(event_list)
         print "DONE"
         return render_template(
             'dashboard.html',
@@ -111,18 +111,16 @@ def event(eventID):
             eventID = eventID
         )
 
-@app.route('/submit/<id>', methods = ['POST'])
-def submit(id):
+@app.route('/submit/<eid>', methods = ['POST'])
+def submit(eid):
     d = request.form
-    '''
     if (d['type'] == "Going"):
-        dbUtil.updateStatus("going")
+        dbUtil.updateStatus("going", eid)
     if (d['type'] == "Interested"):
-        dbUtil.updateStatus("interested")
+        dbUtil.updateStatus("interested", eid)
     if (d['type'] == "Neither"):
-        dbUtil.updateStatus("unmarked")
-    '''
-    return redirect(url_for('event',eventID=id))
+        dbUtil.updateStatus("unmarked", eid)
+    return redirect(url_for('event',eventID=eid))
 
 if __name__ == '__main__':
     app.debug = True
