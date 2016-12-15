@@ -1,11 +1,13 @@
 # MOSSY (Missing Out on Shows Sucks, Yo)
+*By Maddie Ostergaard, Sarah Yoon & Seiji Yawata*
+
 MOSSY is a service that takes the user’s location and saved tracks on Spotify to find concerts in that area from their favorite artists (judging by the number of tracks by that artist they have saved).
 
 ## How To Use
 
 ### Setup
 1. Install flask in a virtual environment
-2. Install the requests module with `pip install requests`
+2. Install the [requests](http://docs.python-requests.org/en/master/) module with `pip install requests`
 
 ### Usage
 `python app.py` will run the Flask app on port 5000
