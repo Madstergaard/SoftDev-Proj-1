@@ -119,7 +119,7 @@ def submitStatus():
     if (d['value'] == "Neither"):
         dbUtil.updateStatus("unmarked")
     param = "/event/%s" %d['title']
-    return redirect(param)) 
+    return redirect(param)
 
 if __name__ == '__main__':
     app.debug = True
