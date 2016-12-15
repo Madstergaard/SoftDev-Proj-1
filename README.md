@@ -4,14 +4,15 @@ MOSSY is a service that takes the user’s location and saved tracks on Spotify 
 ## How To Use
 
 ### Setup
-`pip install requests`
+1. Install flask in a virtual environment
+2. Install the requests module with `pip install requests`
 
 ### Usage
 `python app.py` will run the Flask app on port 5000
 
 You will need a Spotify account to be able to use this service (and it should ideally have enough saved tracks to be able to extract meaningful data).
 
-Authorize MOSSY to allow access to your account.
+Authorize MOSSY to allow access to your account (or else...).
 
 A dashboard will then be presented, showing concerts in your region. For these, you can set whether you are going, interested, or neither. This page can be sorted by status, by date, or by the artist's popularity in your Spotify account (by default).
 

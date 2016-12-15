@@ -12,8 +12,6 @@ SPOTIFY_API_URL = '{}/{}'.format(SPOTIFY_API_BASE_URL, API_VERSION)
 def data(endpoint, params, headers):
     # response = requests.get(endpoint, params=params, headers=headers)
     # return json.loads(response.text)
-
-    # this is so much better than before
     params_str = urllib.urlencode(params) if params else ""
     req_str = "{}/?{}".format(endpoint, params_str) if params_str else endpoint
     req = urllib2.Request(req_str, None, headers) if headers else urllib2.Request(req_str)
