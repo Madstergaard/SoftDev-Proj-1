@@ -126,3 +126,8 @@ SarahY -- 2016-12-12 3:00pm
 MaddieO -- 2016-12-8 4:00pm
 	- Connected html/css/bootstrap to backend
 	- Beautified dashboard.html
+
+SarahY, MaddieO -- 2016-12-14 10:30pm
+	- Met at Maddies crib again
+	- FINISHED!!!! Except scrapped the idea of allowing the user to input their own location
+	- ...And except replacing sift.data() with urllib stuff.... @Seiji pls
