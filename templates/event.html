@@ -62,25 +62,22 @@
     
       <h4><b> Status </b></h4>
       <div class="col-lg-6">
-        <form action="/submit/" method="POST">
-          <p>
-            <input title ="{{ eventID }}" type="submit" class="btn btn-primary btn-lg" value="Going">
+        <form action="/submit/{{ eventID  }}" method="POST">
+            <input type="submit" name="type" class="btn btn-primary btn-lg" value="Going">
             <br>
             <br>
-            <input title ="{{ eventID }}" type="submit" class="btn btn-primary btn-lg" value="Interested"> 
+            <input type="submit" name="type" class="btn btn-primary btn-lg" value="Interested"> 
             <br>
             <br>
-            <input title ="{{ eventID }}" type="submit" class="btn btn-primary btn-lg" value="Neither"> 
-          </p>
+            <input type="submit" name="type" class="btn btn-primary btn-lg" value="Neither"> 
         </form>
-      </div><!-- /input-group -->
-    </div><!-- /.col-lg-6 -->
-
+      </div><!-- /.col-lg-6 -->
+  </div>
 </div><!-- /.row -->
 
 <br>
 <br>
-  <center><p><a class="btn btn-primary btn-lg" href="{{ url }}" role="button"> Buy tickets now! </a></p></center>
+  <center><p><a class="btn btn-primary btn-lg" target="_blank" href="{{ url }}" role="button"> Buy tickets now! </a></p></center>
   
   </div>
   

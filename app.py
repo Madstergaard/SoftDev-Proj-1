@@ -109,17 +109,18 @@ def event(eventID):
             eventID = eventID
         )
 
-@app.route('/submit/')
-def submitStatus():
+@app.route('/submit/<id>', methods = ['POST'])
+def submit(id):
     d = request.form
-    if (d['value'] == "Going"):
+    '''
+    if (d['type'] == "Going"):
         dbUtil.updateStatus("going")
-    if (d['value'] == "Interested"):
+    if (d['type'] == "Interested"):
         dbUtil.updateStatus("interested")
-    if (d['value'] == "Neither"):
+    if (d['type'] == "Neither"):
         dbUtil.updateStatus("unmarked")
-    param = "/event/%s" %d['title']
-    return redirect(param)
+    '''
+    return redirect(url_for('event',eventID=id))
 
 if __name__ == '__main__':
     app.debug = True
