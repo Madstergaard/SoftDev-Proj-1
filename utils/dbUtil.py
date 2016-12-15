@@ -165,8 +165,8 @@ def updateStatus(status):
 	c = db.cursor()
 	user = sift.profile_data(session["access_token"]).get('id')
       
-    params = (user,)  
-    eventData = 'SELECT eventData FROM Users WHERE username = ?;'
+        params = (user,)  
+        eventData = 'SELECT eventData FROM Users WHERE username = ?;'
 
 	# Insert json here
 
