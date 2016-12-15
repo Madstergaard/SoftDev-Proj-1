@@ -1,7 +1,8 @@
 from collections import OrderedDict
 from itertools import islice
 import json # JSON (duh)
-import requests # GET and POST requests
+import urllib
+import urllib2
 
 # Spotify URLs
 SPOTIFY_API_BASE_URL = 'https://api.spotify.com'
@@ -9,8 +10,14 @@ API_VERSION = 'v1'
 SPOTIFY_API_URL = '{}/{}'.format(SPOTIFY_API_BASE_URL, API_VERSION)
 
 def data(endpoint, params, headers):
-    response = requests.get(endpoint, params=params, headers=headers)
-    return json.loads(response.text)
+    # response = requests.get(endpoint, params=params, headers=headers)
+    # return json.loads(response.text)
+
+    # this is so much better than before
+    params_str = urllib.urlencode(params) if params else ""
+    req_str = "{}/?{}".format(endpoint, params_str) if params_str else endpoint
+    req = urllib2.Request(req_str, None, headers) if headers else urllib2.Request(req_str)
+    return json.loads(urllib2.urlopen(req).read())
 
 def profile_data(access_token):
     endpoint = '{}/me'.format(SPOTIFY_API_URL)
