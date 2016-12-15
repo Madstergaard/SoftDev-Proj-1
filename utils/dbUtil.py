@@ -166,9 +166,10 @@ def updateStatus(status):
 	user = sift.profile_data(session["access_token"]).get('id')
       
         params = (user,)  
-        eventData = 'SELECT eventData FROM Users WHERE username = ?;'
+        eventData = loads(getEventData())
 
-	# Insert json here
+        event_details = next((item for item in eventData if item["id"] == eventID), None)
+        event_details['status'] = status
 
         params = (eventData, user)
 	cmd = 'UPDATE Users SET eventData = ? WHERE username = ?;'

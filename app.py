@@ -24,7 +24,9 @@ def home():
         print "GETTING EVENTS"
         city = tix.get_city()
         #event_list = tix.get_event_list(artist_data, city)
+        
         event_list = loads(dbUtil.getEventData())
+        event_list = sort.sort_by_date(event_list)
         print "DONE"
         return render_template(
             'dashboard.html',
