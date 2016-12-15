@@ -14,6 +14,18 @@
       <div class="btn-group" role="group">
         <input class="btn btn-primary btn-lg btn-success" type="submit" name="type" value="Refresh Events">
         <input class="btn btn-primary btn-lg btn-success" type="submit" name="type" value="Refresh Artists">
+        
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-primary btn-lg btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               Sort By
+               <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">Dropdown link</a></li>
+                <li><a href="#">Dropdown link</a></li>
+            </ul>
+        </div>
+
     </center>
     </div>
 </form>
@@ -31,6 +43,9 @@
             <br>
 
             Artist: {{ event['artist']  }}
+            <br>
+
+           <p align="right"> Status: {{ event['status']}} </p>
 
         </h4></p>
 
