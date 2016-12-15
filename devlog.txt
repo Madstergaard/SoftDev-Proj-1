@@ -130,4 +130,8 @@ MaddieO -- 2016-12-8 4:00pm
 SarahY, MaddieO -- 2016-12-14 10:30pm
 	- Met at Maddies crib again
 	- FINISHED!!!! Except scrapped the idea of allowing the user to input their own location
-	- ...And except replacing sift.data() with urllib stuff.... @Seiji pls
+	- ...And except replacing sift.data() with urllib stuff....
+
+SeijiY -- 2016-12-14 11:00pm
+	- Implemented get requests in sift.data() without using the requests module
+	- Wrote up README.md
