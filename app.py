@@ -19,7 +19,7 @@ def home(attr):
 
         print "GETTING ARTIST DATA FROM DB"
         artist_data = loads(dbUtil.getArtistData()) #sorted (all)
-        artist_data = sift.top_n(artist_data, 24) #slices list
+        artist_data = sift.top_n(artist_data, 12) #slices list
 
         print "GETTING EVENTS"
         city = tix.get_city()
@@ -84,7 +84,7 @@ def login():
             dbUtil.refreshArtistData()
             # Always redirect to the homepage
     print "REDIRECTING TO HOME"
-    return redirect(url_for('home'))
+    return redirect(url_for('home', attr='default'))
 
 @app.route('/event/<eventID>')
 def event(eventID):
