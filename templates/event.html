@@ -42,7 +42,7 @@
       <br>
 {% block body %}
  <div class="container">
-  <div class="jumbotron" style="min-height: 700px">
+  <div class="jumbotron" style="min-height: 50em">
     <center><h1 style="color:green;">{{ name }}</h1> </center>
     
   <center>
@@ -61,17 +61,17 @@
       <br>
     
       <h4><b> Status </b></h4>
-      <div class="col-lg-6">
+      
         <form action="/submit/{{ eventID  }}" method="POST">
-            <input type="submit" name="type" class="btn btn-primary btn-lg" value="Going">
-            <br>
-            <br>
-            <input type="submit" name="type" class="btn btn-primary btn-lg" value="Interested"> 
-            <br>
-            <br>
-            <input type="submit" name="type" class="btn btn-primary btn-lg" value="Neither"> 
+        <div class="btn-group" role="group">
+            <button type="buton" name="type" class="btn btn-primary btn-lg" value="Going">Going</button>
+
+            <button type="button" name="type" class="btn btn-primary btn-lg" value="Interested">Interested</button>
+
+            <button type="button" name="type" class="btn btn-primary btn-lg" value="Neither"> Neither</button>
+        </div><!-- /.col-lg-6 -->
         </form>
-      </div><!-- /.col-lg-6 -->
+    
   </div>
 </div><!-- /.row -->
 
