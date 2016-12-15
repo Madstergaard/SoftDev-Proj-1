@@ -105,19 +105,21 @@ def event(eventID):
             url = url,
             status = status,
             location = location,
-            map_link = map_link
+            map_link = map_link,
+            eventID = eventID
         )
 
 @app.route('/submit/')
 def submitStatus():
     d = request.form
-    if (d['value'] == "going"):
-        dbUtil.updateStatus()
-    if (d['value'] == "interested"):
-        dbUtil.updateStatus()
-    if (d['value'] == "unmarked"):
-        dbUtil.updateStatus()
-    return redirect(url_for('root')) 
+    if (d['value'] == "Going"):
+        dbUtil.updateStatus("going")
+    if (d['value'] == "Interested"):
+        dbUtil.updateStatus("interested")
+    if (d['value'] == "Neither"):
+        dbUtil.updateStatus("unmarked")
+    param = "/event/%s" %d['title']
+    return redirect(param)) 
 
 if __name__ == '__main__':
     app.debug = True

@@ -62,17 +62,19 @@
     
       <h4><b> Status </b></h4>
       <div class="col-lg-6">
-        <form action="\submit\" method="POST">
+        <form action="/submit/" method="POST">
           <p> 
-            <input type="submit" value="Going">
+            <input title ={{ eventID }} type="submit" class="btn btn-primary btn-lg" value="Going">
             <br>
-            <input type="submit" value="Interested"> 
             <br>
-            <input type="submit" value="Neither"> 
+            <input title ={{ eventID }} type="submit" class="btn btn-primary btn-lg" value="Interested"> 
+            <br>
+            <br>
+            <input title ={{ eventID }} type="submit" class="btn btn-primary btn-lg" value="Neither"> 
           </p>
-      
-        </div><!-- /input-group -->
-      </div><!-- /.col-lg-6 -->
+        </form>
+      </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
 
 </div><!-- /.row -->
 

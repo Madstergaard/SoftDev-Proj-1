@@ -176,7 +176,3 @@ def updateStatus(status):
 	db.commit()
 	db.close()
 	return
-
-def getStatus():
-
-
