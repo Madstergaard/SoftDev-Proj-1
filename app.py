@@ -7,10 +7,10 @@ app.secret_key = 'secrets'
 
 @app.route('/')
 def root():
-    return redirect(url_for('home'))
+    return redirect(url_for('home',attr= "default"))
 
-@app.route('/home/')
-def home():
+@app.route('/home/<attr>')
+def home(attr):
     # Check if logged in
     if 'access_token' in session:
         # Refresh access token
@@ -24,9 +24,14 @@ def home():
         print "GETTING EVENTS"
         city = tix.get_city()
         #event_list = tix.get_event_list(artist_data, city)
-        
+
         event_list = loads(dbUtil.getEventData())
-        event_list = sort.sort_by_status(event_list)
+
+        if attr == "status":
+            event_list = sort.sort_by_status(event_list)
+        elif attr == "date":
+            event_list = sort.sort_by_date(event_list)
+            
         print "DONE"
         return render_template(
             'dashboard.html',
@@ -38,11 +43,7 @@ def home():
         # Authentication url is a Spotify page
         auth_url = auth.authentication_url()
         return render_template('dashboard.html', logged_in = False, auth_url=auth_url)
-
-@app.route('/home/sortby/<attribute>')
-def homesorted(attribute):
-    if attribute == "artists-alphabetical":
-        event_list_sorted = sort.sort_artists_alphabet( tix.get_event_list())
+            
 
 @app.route('/refresh/', methods = ['POST'])
 def refresh():
@@ -81,7 +82,7 @@ def login():
         else:
             print "OLD USER"
             dbUtil.refreshArtistData()
-    # Always redirect to the homepage
+            # Always redirect to the homepage
     print "REDIRECTING TO HOME"
     return redirect(url_for('home'))
 
