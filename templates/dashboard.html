@@ -6,15 +6,16 @@
 {% block body %}
 {% if logged_in %}
 
-<center><b><h1 style="color:green;"> Event List</h1> </b> </center>
+<center><b><h1 style="color:#5cb85c;"> Event List</h1> </b> </center>
 <br>
 
 <form action="/refresh/" method="POST">
     <center>
-
-        <input class="btn btn-primary btn-lg" type="submit" name="type" value="Refresh Events">
-        <input class="btn btn-primary btn-lg" type="submit" name="type" value="Refresh Artists">
+      <div class="btn-group" role="group">
+        <input class="btn btn-primary btn-lg btn-success" type="submit" name="type" value="Refresh Events">
+        <input class="btn btn-primary btn-lg btn-success" type="submit" name="type" value="Refresh Artists">
     </center>
+    </div>
 </form>
 
 <br>
@@ -24,7 +25,7 @@
 <div class="container">
 
     <div class="jumbotron">
-        <h3><a href="/event/{{ event['id'] }}" style="color:green;">{{ event['event-name'] }}</a></h3>
+        <h3><a href="/event/{{ event['id'] }}" style="color:#5cb85c;">{{ event['event-name'] }}</a></h3>
         <p><h4>
             Date: {{ event['date'] }} 
             <br>
